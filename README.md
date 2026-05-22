@@ -8,4 +8,9 @@ Day 1 - let's start with scaffholding, love the overview
 - okay let's write the score_repo, easy part
 - oh shoot, yes, i said this time i'll work with uv. let's install it
 - okay so the LLM advised me to do look at pydantic for the data schema. cool stuff, naturally wouldn't thought about it until later
--ah yes, this repo I'd say i'd have tests in. let's write the god adam
+-ah yes, this repo I'd say i'd have tests in. let's write the god damn tests cases wohoo
+- i realized i had snake_case mistakes (cuz I write code like I write on paper...illegibable) so i installed ruff. it has been ruff around
+- always check your gitignore girl
+- ah yes. i need pylance so i can hover over these functions that i forget what they do and see where they are placed
+
+
