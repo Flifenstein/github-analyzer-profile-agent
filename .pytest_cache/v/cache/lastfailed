@@ -1,0 +1,10 @@
+{
+  "tests/test_score_profile.py::TestScoreProfile::test_score_profile": true,
+  "tests/test_score_profile.py::TestScoreProfile": true,
+  "tests/test_score_profile.py::TestScoreProfile::test_valid_score": true,
+  "tests/test_score_profile.py::TestScoreProfile::test_invalid_name": true,
+  "tests/test_score_profile.py::TestScoreProfile::test_invalid_score_outofbound": true,
+  "tests/test_score_profile.py::TestScoreProfile::test_invalid_score_invalid": true,
+  "tests/test_score_profile.py::TestScoreProfile::test_invalid_score_negative": true,
+  "tests/test_score_profile.py::TestScoreProfile::test_invalid_has_readme": true
+}

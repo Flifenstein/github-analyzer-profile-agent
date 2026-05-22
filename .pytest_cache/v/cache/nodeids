@@ -1,0 +1,23 @@
+[
+  "tests/test_score_profile.py::TestRepoScore::test_invalid_has_readme",
+  "tests/test_score_profile.py::TestRepoScore::test_invalid_name",
+  "tests/test_score_profile.py::TestRepoScore::test_invalid_score_invalid",
+  "tests/test_score_profile.py::TestRepoScore::test_invalid_score_negative",
+  "tests/test_score_profile.py::TestRepoScore::test_invalid_score_outofbound",
+  "tests/test_score_profile.py::TestRepoScore::test_valid_score",
+  "tests/test_score_profile.py::TestScoreProfile::test_invalid_has_readme",
+  "tests/test_score_profile.py::TestScoreProfile::test_invalid_hasreadme",
+  "tests/test_score_profile.py::TestScoreProfile::test_invalid_name",
+  "tests/test_score_profile.py::TestScoreProfile::test_invalid_score",
+  "tests/test_score_profile.py::TestScoreProfile::test_invalid_score_invalid",
+  "tests/test_score_profile.py::TestScoreProfile::test_invalid_score_negative",
+  "tests/test_score_profile.py::TestScoreProfile::test_invalid_score_outofbound",
+  "tests/test_score_profile.py::TestScoreProfile::test_score_profile",
+  "tests/test_score_profile.py::TestScoreProfile::test_valid_score",
+  "tests/test_score_repo.py::TestRepoScore::test_invalid_has_readme",
+  "tests/test_score_repo.py::TestRepoScore::test_invalid_name",
+  "tests/test_score_repo.py::TestRepoScore::test_invalid_score_invalid",
+  "tests/test_score_repo.py::TestRepoScore::test_invalid_score_negative",
+  "tests/test_score_repo.py::TestRepoScore::test_invalid_score_outofbound",
+  "tests/test_score_repo.py::TestRepoScore::test_valid_score"
+]

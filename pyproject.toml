@@ -6,9 +6,20 @@ readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
     "pydantic>=2.13.4",
+    "ruff>=0.15.14",
 ]
 
 [dependency-groups]
 dev = [
     "pytest>=9.0.3",
+]
+
+[tool.ruff]
+line-length = 88
+
+[tool.ruff.lint]
+select = [
+    "E",    # pycodestyle errors
+    "N",    # naming conventions ← this is the one you want
+    "F",    # pyflakes (unused imports etc)
 ]
