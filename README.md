@@ -1,0 +1,1 @@
+I want to create step by step a multi agent workflow that looks at my trashed github and suggest how to maintain my never finished repos in decent shape. 
