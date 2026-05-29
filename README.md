@@ -28,4 +28,5 @@ Agent 1 produces → ProfileAnalysis
 Agent 2 produces → ResearchFindings 
 Agent 4 produces → ApprovedChanges    
 - locked in the amazing research findings, that one was easy
-- the improvement plant, that one was harder to logically think through since i needed a new validator form the chnage of topics if there are new finidngs proposed
+- the improvement plan, that one was harder to logically think through since i needed a new validator form the chnage of topics if there are new finidngs proposed
+- co write the test with AI because there is a lot to write, i just made sure it checks all the logic of schemas
