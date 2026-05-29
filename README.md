@@ -27,3 +27,5 @@ made the mental schema of
 Agent 1 produces → ProfileAnalysis   
 Agent 2 produces → ResearchFindings 
 Agent 4 produces → ApprovedChanges    
+- locked in the amazing research findings, that one was easy
+- the improvement plant, that one was harder to logically think through since i needed a new validator form the chnage of topics if there are new finidngs proposed

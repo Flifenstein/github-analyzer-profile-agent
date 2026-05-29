@@ -36,5 +36,3 @@ class ImprovementPlan(BaseModel):
     actions: list[ImprovementAction]
     summary_plan: str
 
-
- 
