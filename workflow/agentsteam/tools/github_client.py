@@ -49,4 +49,39 @@ class GitHubReader:
         
 
 class GitHubWriter:
+    def __init__(self, token: str, username: str):
+        self.username = username
+        self.headers = {
+            "Authorization": f"Bearer {token}",
+            "Accept": "application/vnd.github+json",
+            "X-GitHub-Api-Version": "2022-11-28",
+        }
+
+    def _base(self, repo: str) -> str:
+        return f"https://api.github.com/repos/{self.username}/{repo}"
+
+    def update_description(self, repo: str, description: str) -> None:
+        r = requests.patch(self._base(repo), headers=self.headers, json={"description": description})
+        r.raise_for_status()
+
+    def update_topics(self, repo: str, topics: list[str]) -> None:
+        r = requests.put(f"{self._base(repo)}/topics", headers=self.headers, json={"names": topics})
+        r.raise_for_status()
+
+    def update_visibility(self, repo: str, visibility: str) -> None:
+        r = requests.patch(self._base(repo), headers=self.headers, json={"visibility": visibility})
+        r.raise_for_status()
+
+    def update_readme(self, repo: str, content: str) -> None:
+        # GitHub requires the file SHA when updating an existing file
+        existing = requests.get(f"{self._base(repo)}/contents/README.md", headers=self.headers)
+        sha = existing.json().get("sha") if existing.status_code == 200 else None
+        payload = {
+            "message": "docs: update README via profile agent",
+            "content": base64.b64encode(content.encode()).decode(),
+        }
+        if sha:
+            payload["sha"] = sha
+        r = requests.put(f"{self._base(repo)}/contents/README.md", headers=self.headers, json=payload)
+        r.raise_for_status()
 
