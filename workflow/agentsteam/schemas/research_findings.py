@@ -1,5 +1,7 @@
 from pydantic import BaseModel
 
+
+#easy to verify where the source is from
 class Source(BaseModel):
     title: str
     url: str
