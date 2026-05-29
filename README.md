@@ -21,4 +21,9 @@ Day 2
 
 Day 3
 - committed cached files by mistake so did git rm -r --cached .
-- 
+- finished repo score
+
+made the mental schema of
+Agent 1 produces → ProfileAnalysis   
+Agent 2 produces → ResearchFindings 
+Agent 4 produces → ApprovedChanges    

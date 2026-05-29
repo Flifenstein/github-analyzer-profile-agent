@@ -25,7 +25,7 @@ class RepoScore(BaseModel):
     has_license : bool
     has_tests : bool
     last_commit_days_ago : int
-    commit_quality : str | None
+    commit_quality : str | None = None #optional
     content_summary : str #what the repo does
     analysis_summary: str # Agent 1 's opinion
 
