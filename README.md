@@ -14,3 +14,10 @@ Day 1 - let's start with scaffholding, love the overview
 - ah yes. i need pylance so i can hover over these functions that i forget what they do and see where they are placed
 
 
+Day 2
+- look onYT videos on how to organize my efolder repo, hence the insane commit of making sure all the files are in the right folders
+- add some extenstions like pydantic 
+-read docs out fo curiosity
+
+Day 3
+-

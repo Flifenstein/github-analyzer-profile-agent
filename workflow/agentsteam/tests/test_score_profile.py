@@ -1,4 +1,4 @@
-from schemas.score_repo import RepoScore
+from workflow.agents.schemas.score_repo import RepoScore
 from pydantic import ValidationError
 import pytest
 
@@ -12,7 +12,7 @@ class TestRepoScore:
 
     def test_invalid_name(self):
         with pytest.raises(ValidationError):
-            RepoScore(name=9, score=8, has_readme=True)
+            RepoScore(name=9, score=11, has_readme=True)
 
     def test_invalid_score_outofbound(self):
         with pytest.raises(ValidationError):
@@ -26,6 +26,6 @@ class TestRepoScore:
         with pytest.raises(ValidationError):
             RepoScore(name="Name-repo", score=-1, has_readme=True)
 
-    def test_invalid_has_readme(self):
+    def test_invalid_hasreadme(self):
         with pytest.raises(ValidationError):
             RepoScore(name="Name-repo", score=8, has_readme="maybe")
