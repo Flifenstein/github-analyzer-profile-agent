@@ -20,4 +20,5 @@ Day 2
 -read docs out fo curiosity
 
 Day 3
--
+- committed cached files by mistake so did git rm -r --cached .
+- 
