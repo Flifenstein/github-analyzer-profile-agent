@@ -1,0 +1,126 @@
+{
+  "best_practices": [
+    "A README should clearly state why a project exists, what it does for users, and how to run it — this is the single most impactful change for any public portfolio repo. GitHub's own docs note that a README communicates 'why your project is useful, what they can do with your project, and how they can use it.'",
+    "For research artifacts, Tilburg Science Hub recommends including at minimum: project title/research question, motivation, method and results summary, and a repository overview with a directory structure table — exactly the skeleton missing from both thesis repos and github-analyzer-profile-agent.",
+    "A README 'is both documentation and marketing for your project' — a well-crafted one not only helps users understand the project but also serves as a public-facing signal of engineering maturity to fellowship reviewers.",
+    "Without a license, default copyright law applies and 'no one may reproduce, distribute, or create derivative works from your work' — this actively harms a portfolio's credibility. For research and personal tools where maximum reuse is the goal, MIT is the recommended default: it is 'short, elegant, and places almost no restrictions on the user.'",
+    "Pin your best 3–6 repositories so they are prominently displayed and direct reviewers' attention to your strongest work. GitHub Docs recommend picking repos that 'show your diverse skills and are relevant to your specific job search.'",
+    "For AI safety fellowship audiences, AI evals repos like UKGovernmentBEIS/inspect_evals demonstrate the documentation standard: each evaluation has a per-subdirectory README, a pyproject.toml for dependency management, end-to-end pytest tests, and a contribution checklist. Evaluations must be 'clearly scoped, verifiable, and comparable' against baseline results.",
+    "Commit messages should follow a consistent convention such as Conventional Commits ('feat:', 'fix:', 'docs:') rather than informal diary entries — this signals engineering professionalism to technical reviewers who scan commit history.",
+    "Binary files (compiled .class files, ChromaDB binaries, .rar archives) should not be committed to repos. Use .gitignore to exclude build artifacts and data files, and document how to regenerate them in the README instead.",
+    "AI-assisted development increasingly requires transparent disclosure. A growing number of open source projects require disclosure rules for AI-assisted contributions. The emerging norm is to note the tool and extent of use in a README acknowledgements section or commit co-authorship tags rather than leaving it implicit.",
+    "For Python projects, a pyproject.toml with pinned dependencies and uv for environment management (as already used in github-analyzer-profile-agent) is a current best practice for reproducibility — the same pattern used by UKGovernmentBEIS/inspect_evals."
+  ],
+  "example_repos": [
+    "https://github.com/UKGovernmentBEIS/inspect_evals — UK government AI safety evaluation suite with per-eval READMEs, pyproject.toml dependency management with uv, MIT license, end-to-end pytest coverage, and a formal contribution checklist. Directly models what a well-documented AI safety evals project looks like.",
+    "https://github.com/UKGovernmentBEIS/inspect_ai — The parent Inspect framework for LLM evaluations from the UK AI Safety Institute. Demonstrates professional README structure with clear installation paths, dev setup instructions, and links to full documentation.",
+    "https://github.com/allenai/safety-eval — Allen AI's safety evaluation repo for generative LMs and safety classifiers, covering 14+ benchmarks. Shows how to structure a multi-benchmark evaluation suite with clear usage instructions and modular benchmark addition.",
+    "https://github.com/confident-ai/deepeval — Open-source LLM evaluation framework with a well-structured README, step-by-step quickstart, metrics catalogue, and badges. Models the documentation level appropriate for a public-facing technical tool in the evals space.",
+    "https://github.com/openai/evals — OpenAI's evals registry. Demonstrates how to document an eval framework end-to-end: build-eval guide, run-evals guide, contribution workflow, and YAML-based eval templates.",
+    "https://github.com/ashioyajotham/eval-awareness-research — Individual researcher's mechanistic interpretability project investigating whether LLMs internally represent being evaluated. Shows a solo researcher producing a well-structured README with research question, methodology, file inventory, and results visualizations — the model for what ai-techsafety-journey and github-analyzer-profile-agent should aspire to.",
+    "https://github.com/jphall663/awesome-machine-learning-interpretability — Curated responsible ML resource list covering AI safety, interpretability, fairness, and privacy. A well-maintained reference list repo demonstrates curation judgment, which is a relevant signal for a PM targeting AI safety roles.",
+    "https://github.com/jehna/readme-best-practices — A copy-paste README template repo with structured sections for installation, usage, configuration, and contributing. Useful as a direct scaffold for upgrading the weakest READMEs in the portfolio."
+  ],
+  "personalized_advice": [
+    "Your biggest single-session win is making github-analyzer-profile-agent portfolio-ready: rewrite its README to explain the four-agent architecture, the Pydantic schema pipeline, and how to run it with uv. This is your most technically impressive public repo and the one most aligned with AI safety evaluations work — but its current dev-diary README means a fellowship reviewer who hasn't built it themselves cannot evaluate what it does. Model the README after ashioyajotham/eval-awareness-research or inspect_evals sub-READMEs: research question → architecture → setup → example output.",
+    "Add MIT licenses to soft-hard-prompts-msc-thesis and github-analyzer-profile-agent immediately. Without a license, 'no one may legally use, copy, or modify' your work even if it is public — this actively signals you are unaware of open-source norms, which is a significant negative signal for AI safety fellowship committees who are themselves embedded in the open-source research community.",
+    "Make ai-techsafety-journey public and give it a real README as soon as it has any content worth showing. A private repo 'contributes nothing to the public portfolio' — and AI safety fellowships specifically look for demonstrated, not just claimed, engagement with safety topics. Even a learning log with a clear framing ('tracking my AI safety self-study: papers read, projects built, key questions') is more credible than a polished empty repo.",
+    "Add a setup/run guide to soft-hard-prompts-msc-thesis. It currently has a requirements.txt and Streamlit app, which means it is 95% of the way to being reproducible — adding three steps ('clone, pip install -r requirements.txt, streamlit run app.py') converts it from a research artifact into a runnable demonstration, which is the distinction fellowship reviewers look for.",
+    "Strategically pin your repos to control the first impression. Given your AI safety fellowship goal, the pin order should be: (1) soft-hard-prompts-msc-thesis, (2) github-analyzer-profile-agent, (3) EUdocumentsChat, (4) bsc-thesis-qanon-analysis, (5) R-workshop. This surfaces your LLM/NLP thesis and multi-agent pipeline work front-and-center while de-emphasizing the 2017 artifacts that currently dilute your signal.",
+    "Your AI co-authorship pattern needs a consistent, explicit disclosure strategy. The open source community is actively debating this: some major projects now require disclosure, and 'it would be misleading for a developer to present substantial AI-generated output as purely their own work.' A brief, honest acknowledgements section in each repo README (e.g. 'built with Claude as a coding pair — all architectural decisions and testing by me') is now the norm expected of transparent contributors, and adds credibility rather than subtracting it.",
+    "The profile README currently does not link to specific repos or projects — it lists interests but gives no navigation cues. GitHub's own guidance recommends including 'some of your best projects' in the profile README as commentary, then pinning them. Add three short project descriptions with direct links to soft-hard-prompts-msc-thesis, github-analyzer-profile-agent, and EUdocumentsChat, framed around your evals and agentic AI interests.",
+    "For a Technical PM targeting AI safety fellowships, contributing even a small fix or documentation improvement to UKGovernmentBEIS/inspect_evals or allenai/safety-eval would be highly visible evidence of engagement with the actual AI safety tooling ecosystem — more signal than another solo project. The inspect_evals repo explicitly welcomes community contributions and has a clear contributor guide."
+  ],
+  "sources": [
+    {
+      "title": "About the repository README file - GitHub Docs",
+      "url": "https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes"
+    },
+    {
+      "title": "README Best Practices - Tilburg Science Hub",
+      "url": "https://www.tilburgsciencehub.com/topics/collaborate-share/share-your-work/content-creation/readme-best-practices/"
+    },
+    {
+      "title": "Licensing a repository - GitHub Docs",
+      "url": "https://docs.github.com/articles/licensing-a-repository"
+    },
+    {
+      "title": "Choose an open source license | Choose a License",
+      "url": "https://choosealicense.com/"
+    },
+    {
+      "title": "Complete Guide to Open Source Licenses (MIT, GPL, Apache)",
+      "url": "https://www.wanderseven.com/2026/04/complete-guide-open-source-licenses-mit-gpl-apache.html"
+    },
+    {
+      "title": "Using GitHub as a Portfolio When Applying for Jobs - GitHub Community",
+      "url": "https://github.com/orgs/community/discussions/169760"
+    },
+    {
+      "title": "Using your GitHub profile to enhance your resume - GitHub Docs",
+      "url": "https://docs.github.com/en/account-and-profile/tutorials/using-your-github-profile-to-enhance-your-resume"
+    },
+    {
+      "title": "GitHub - UKGovernmentBEIS/inspect_evals: Collection of evals for Inspect AI",
+      "url": "https://github.com/UKGovernmentBEIS/inspect_evals"
+    },
+    {
+      "title": "Inspect contributing guide - UKGovernmentBEIS",
+      "url": "https://ukgovernmentbeis.github.io/inspect_evals/contributing/"
+    },
+    {
+      "title": "GitHub - UKGovernmentBEIS/inspect_ai: Inspect: A framework for large language model evaluations",
+      "url": "https://github.com/UKGovernmentBEIS/inspect_ai"
+    },
+    {
+      "title": "GitHub - allenai/safety-eval: A simple evaluation of generative language models and safety classifiers",
+      "url": "https://github.com/allenai/safety-eval"
+    },
+    {
+      "title": "GitHub - confident-ai/deepeval: The LLM Evaluation Framework",
+      "url": "https://github.com/confident-ai/deepeval"
+    },
+    {
+      "title": "GitHub - openai/evals: Evals is a framework for evaluating LLMs and LLM systems",
+      "url": "https://github.com/openai/evals"
+    },
+    {
+      "title": "GitHub - ashioyajotham/eval-awareness-research: Mechanistic interpretability experiments",
+      "url": "https://github.com/ashioyajotham/eval-awareness-research"
+    },
+    {
+      "title": "GitHub - jphall663/awesome-machine-learning-interpretability",
+      "url": "https://github.com/jphall663/awesome-machine-learning-interpretability"
+    },
+    {
+      "title": "AI-assisted development and open source: legal and cultural issues - Red Hat",
+      "url": "https://www.redhat.com/en/blog/ai-assisted-development-and-open-source-navigating-legal-issues"
+    },
+    {
+      "title": "The AI Attribution Paradox: Transparency as Social Strategy in Open-Source Software Development",
+      "url": "https://arxiv.org/pdf/2512.00867"
+    },
+    {
+      "title": "GitHub - jehna/readme-best-practices: Best practices for writing a README for your open source project",
+      "url": "https://github.com/jehna/readme-best-practices"
+    },
+    {
+      "title": "Why Your GitHub May Matter More Than Your Degree - phData",
+      "url": "https://www.phdata.io/blog/why-your-github-may-matter-more-than-your-degree/"
+    },
+    {
+      "title": "Enhancing Your Professional Profile: Building and Showcasing Projects on GitHub - Refonte Learning",
+      "url": "https://www.refontelearning.com/blog/enhancing-your-professional-profile-building-and-showcasing-full-stack-projects-on-github"
+    }
+  ],
+  "search_queries_used": [
+    "AI safety fellowship portfolio GitHub best practices 2024",
+    "GitHub README best practices open source project documentation",
+    "exemplary AI safety research GitHub repositories evals interpretability",
+    "choosing open source license MIT Apache GitHub research project guide",
+    "LLM evals benchmark GitHub portfolio project example well-documented",
+    "disclosing AI assistance co-authorship open source projects best practices 2024",
+    "github profile README pinned repos portfolio tips for researchers job seekers",
+    "UKGovernmentBEIS inspect_evals GitHub README structure documentation example"
+  ]
+}

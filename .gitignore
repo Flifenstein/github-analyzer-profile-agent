@@ -6,7 +6,9 @@ __pycache__/
 .ruff_cache/
 
 # Pipeline run traces (contains your repo data)
-runs/
+workflow/agentsteam/runs/*
+# ...except one complete run kept public as an example
+!workflow/agentsteam/runs/20260530-100158/
 
 # Claude
 .claude/

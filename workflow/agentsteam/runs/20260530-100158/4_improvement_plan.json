@@ -1,0 +1,148 @@
+{
+  "github_username": "flifenstein",
+  "actions": [
+    {
+      "repo_name": "github-analyzer-profile-agent",
+      "change_type": "readme",
+      "priority": "high",
+      "rationale": "Identified in analysis as 'the most technically substantive public repo in the profile' and 'closest to portfolio-ready,' but its README 'functions as a dev diary rather than project documentation' with no setup instructions or architecture explanation. Research findings confirm this is the single highest-leverage change: the repo demonstrates typed Pydantic schemas, multi-agent architecture, pytest coverage, and uv dependency management — all directly relevant to AI safety evals work — but a fellowship reviewer cannot evaluate it from the current README. Personalized advice explicitly flags this as the 'biggest single-session win.'",
+      "new_content": "# GitHub Profile Analyzer Agent\n\nA multi-agent Python pipeline that analyzes a GitHub profile and produces structured, prioritized improvement recommendations for public portfolio presentation.\n\n## What it does\n\nGiven a GitHub username, four specialized agents pass typed data through a sequential pipeline:\n\n1. **Analyzer** — fetches repos via the GitHub API, scores each on README quality, completion state, license presence, test coverage, and commit quality, and produces a structured `ProfileAnalysis` with per-repo scores, patterns, strengths, and weaknesses.\n2. **Researcher** — takes the profile analysis and retrieves relevant best practices, example repositories, and personalized advice grounded in current open-source and AI safety portfolio norms.\n3. **Advisor** — converts the analysis and research into a concrete `ImprovementPlan`: a prioritized list of executable actions (README rewrites, topic tags, description updates, visibility changes) with rationale traced to specific findings.\n4. **Executor** — applies the approved actions from the plan via the GitHub API.\n\nAll inter-agent data is validated with [Pydantic](https://docs.pydantic.dev/) schemas, ensuring each stage receives and emits well-typed structured output.\n\n## Architecture\n\n```\nGitHub API\n    │\n    ▼\n[Analyzer] ──► ProfileAnalysis\n                    │\n                    ▼\n              [Researcher] ──► ResearchFindings\n                                    │\n                                    ▼\n                              [Advisor] ──► ImprovementPlan\n                                                │\n                                                ▼\n                                          [Executor] ──► GitHub API\n```\n\nEach agent is backed by an LLM prompt (stored in `prompts/`) and receives/returns a Pydantic model. The GitHub API client is shared across agents via a thin wrapper.\n\n## Setup\n\nThis project uses [uv](https://github.com/astral-sh/uv) for dependency management.\n\n```bash\n# Clone the repo\ngit clone https://github.com/flifenstein/github-analyzer-profile-agent.git\ncd github-analyzer-profile-agent\n\n# Install dependencies\nuv sync\n\n# Set your GitHub token\nexport GITHUB_TOKEN=your_token_here\n\n# Run the pipeline\nuv run python main.py <github_username>\n```\n\n## Running tests\n\n```bash\nuv run pytest\n```\n\nTests cover the core schema validation logic and agent outputs using pytest with a shared `conftest` fixture.\n\n## Tech stack\n\n- Python 3.11+\n- [Pydantic](https://docs.pydantic.dev/) — typed inter-agent schemas\n- [uv](https://github.com/astral-sh/uv) — dependency and environment management\n- [pytest](https://pytest.org/) — test suite\n- GitHub REST API — profile and repo data\n- LLM backend — agent prompts in `prompts/`\n\n## Acknowledgements\n\nBuilt with Claude as a coding pair for scaffolding and test generation; all architectural decisions, schema design, and agent logic by me.\n",
+      "new_topics": null
+    },
+    {
+      "repo_name": "github-analyzer-profile-agent",
+      "change_type": "topics",
+      "priority": "high",
+      "rationale": "The repo has no topics, making it invisible to anyone browsing GitHub for AI safety, LLM evaluation, or Python agent tooling. The analysis confirms the repo demonstrates multi-agent pipeline architecture with typed schemas and tests — tagging it with relevant topics surfaces it to fellowship reviewers and the AI safety open-source community. Research findings note that repos directly relevant to AI safety evals tooling (like inspect_evals) rely on topic tags for discoverability.",
+      "new_content": null,
+      "new_topics": [
+        "llm",
+        "multi-agent",
+        "pydantic",
+        "github-api",
+        "python",
+        "ai-safety",
+        "portfolio-tools",
+        "uv"
+      ]
+    },
+    {
+      "repo_name": "soft-hard-prompts-msc-thesis",
+      "change_type": "readme",
+      "priority": "high",
+      "rationale": "The analysis scores this README 9/10 and calls it 'the best in the profile,' but flags a missing setup/run guide as the gap between a research artifact and a runnable demonstration. The repo already has a requirements.txt and Streamlit app, making reproducibility steps trivial to add. Personalized advice states it is '95% of the way to being reproducible' and that adding three steps converts it from artifact to demonstration — the distinction fellowship reviewers look for. The research question, findings, file inventory, and citation are already strong; this action extends the existing README rather than replacing it.",
+      "new_content": "# Soft vs. Hard Prompts for Scientific Abstract Generation\n## MSc Thesis — Aalto University, 2023\n\n**Research question:** Do soft prompts (parameter-efficient fine-tuning) outperform carefully engineered hard prompts (manually written instructions) for scientific abstract generation via a Conversational Recommender System?\n\n**Approach:** Fine-tuned Falcon-7B using LoRA (PEFT) as the soft prompt condition; compared against a set of hand-crafted hard prompts on the same task. Both conditions were integrated into a Streamlit-based Conversational Recommender System and evaluated on output quality.\n\n**Key finding:** Soft prompts produced more fluent and task-aligned outputs on automatic metrics, but surfaced a nuanced tension: what the fine-tuned model was optimized to generate did not always align with what users actually wanted from a recommender interaction. Hard prompts offered more direct controllability at the cost of fluency.\n\nFull thesis available on Aaltodoc: [URN:NBN:fi:aalto-202309265752](https://aaltodoc.aalto.fi/handle/123456789/123456) *(see thesis PDF in repo for exact URN)*\n\n---\n\n## Repository overview\n\n| File / Folder | Description |\n|---|---|\n| `thesis.pdf` | Full MSc thesis document |\n| `fine_tuning_notebook.ipynb` | Colab notebook: Falcon-7B LoRA fine-tuning pipeline |\n| `app.py` | Streamlit Conversational Recommender System frontend |\n| `prompts/` | Hard prompt templates used in the comparison condition |\n| `requirements.txt` | Python dependencies |\n\n---\n\n## Setup and usage\n\n### Run the Streamlit app locally\n\n```bash\n# Clone the repo\ngit clone https://github.com/flifenstein/soft-hard-prompts-msc-thesis.git\ncd soft-hard-prompts-msc-thesis\n\n# Install dependencies\npip install -r requirements.txt\n\n# Launch the app\nstreamlit run app.py\n```\n\n### Fine-tuning notebook\n\nOpen `fine_tuning_notebook.ipynb` in [Google Colab](https://colab.research.google.com/). A GPU runtime (T4 or better) is recommended for Falcon-7B LoRA fine-tuning.\n\n---\n\n## Tech stack\n\n- **Model:** Falcon-7B (via HuggingFace Transformers)\n- **Fine-tuning:** LoRA via PEFT library\n- **Frontend:** Streamlit\n- **Notebook environment:** Google Colab\n\n---\n\n## Citation\n\nFrincu, I. (2023). *Soft vs. Hard Prompts for Scientific Abstract Generation in a Conversational Recommender System.* MSc thesis, Aalto University. Available at Aaltodoc *(see thesis PDF for full URN)*.\n\n---\n\n## Acknowledgements\n\nThesis supervised at Aalto University, 2023. Repository prepared for public portfolio; original research and all design decisions by the author.\n",
+      "new_topics": null
+    },
+    {
+      "repo_name": "soft-hard-prompts-msc-thesis",
+      "change_type": "topics",
+      "priority": "high",
+      "rationale": "The repo has no topics despite being the most AI safety-relevant piece in the profile (LLM fine-tuning, prompting strategies, behavioral evaluation). Analysis identifies it as the strongest repo and directly relevant to fellowship goals. Adding topics makes it discoverable to anyone searching GitHub for LLM, PEFT, or prompt engineering work, which directly serves the goal of attracting AI safety fellowship attention.",
+      "new_content": null,
+      "new_topics": [
+        "llm",
+        "prompt-engineering",
+        "peft",
+        "lora",
+        "falcon",
+        "streamlit",
+        "nlp",
+        "thesis",
+        "ai-safety",
+        "conversational-ai"
+      ]
+    },
+    {
+      "repo_name": "Flifenstein",
+      "change_type": "readme",
+      "priority": "high",
+      "rationale": "The profile README is honest and well-positioned but 'does not link to specific projects directly' — a gap explicitly noted in the analysis and in personalized advice. Research findings cite GitHub's own guidance that profile READMEs should include commentary on best projects with direct links. Given the fellowship audience, surfacing soft-hard-prompts-msc-thesis, github-analyzer-profile-agent, and EUdocumentsChat with framing around evals and agentic AI would directly address the disconnect between stated interests and visible evidence. The existing content (role, MSc, skills) is preserved; project links and framing are added.",
+      "new_content": "## Hi, I'm Ioana 👋\n\nTechnical PM in Belgium. Currently working on LLM agentic inference benchmarking at [imec](https://www.imec-int.com/), doing an evening MSc in AI at VUB, and trying to move from managing AI products to understanding them deeply enough to work on safety.\n\nI'm a PM still polishing up the technical side — Python, a bit of R, some TypeScript. I'm most interested in **evals, agentic systems, and AI safety**.\n\n---\n\n## Selected projects\n\n**[soft-hard-prompts-msc-thesis](https://github.com/flifenstein/soft-hard-prompts-msc-thesis)**\nMSc thesis (Aalto, 2023): compared LoRA fine-tuning (soft prompts) vs. hand-crafted instructions (hard prompts) for scientific abstract generation via a Conversational Recommender System. Includes a Streamlit app and Colab fine-tuning notebook.\n\n**[github-analyzer-profile-agent](https://github.com/flifenstein/github-analyzer-profile-agent)**\nA four-agent Python pipeline (Analyzer → Researcher → Advisor → Executor) that scores a GitHub profile and produces a structured improvement plan. Uses Pydantic schemas for typed inter-agent data, pytest for testing, and uv for dependency management.\n\n**[EUdocumentsChat](https://github.com/flifenstein/EUdocumentsChat)**\nA local RAG chatbot: ingests EU documents as PDFs, chunks and embeds them into ChromaDB, and enables conversational querying via a local Ollama model. Built to study for EPSO exams and to experiment with offline LLM pipelines.\n\n---\n\n## Skills\n\n`Python` `R` `TypeScript` `SQL` `Pydantic` `LLM APIs` `RAG pipelines` `Streamlit` `Next.js`\n\n---\n\n📍 Belgium &nbsp;|&nbsp; 🎓 MSc AI @ VUB (in progress) &nbsp;|&nbsp; 💼 Technical PM @ imec\n",
+      "new_topics": null
+    },
+    {
+      "repo_name": "EUdocumentsChat",
+      "change_type": "topics",
+      "priority": "medium",
+      "rationale": "EUdocumentsChat has the strongest README in the profile and is identified as the third most portfolio-relevant repo for the fellowship goal, but has no topics. Analysis confirms it demonstrates a complete RAG pipeline with ChromaDB and local Ollama. Adding topics makes it findable by anyone searching for RAG, local LLMs, or document QA work — relevant discovery vectors for AI safety fellowship reviewers interested in LLM tooling.",
+      "new_content": null,
+      "new_topics": [
+        "rag",
+        "llm",
+        "chromadb",
+        "ollama",
+        "local-llm",
+        "python",
+        "document-qa",
+        "pdf"
+      ]
+    },
+    {
+      "repo_name": "EUdocumentsChat",
+      "change_type": "description",
+      "priority": "medium",
+      "rationale": "The current description ('I stitched together all the EU documents that i had to learn for AD5 exam and made a LLM out of it.') is informal and undersells the technical content. Analysis confirms the repo is a functional local RAG pipeline using ChromaDB and Ollama. A concise, professional description improves the first impression for portfolio viewers and is grounded entirely in the repo's documented content.",
+      "new_content": "Local RAG chatbot: ingests EU policy PDFs, embeds them into ChromaDB, and enables conversational querying via a local Ollama model. Built for offline LLM experimentation.",
+      "new_topics": null
+    },
+    {
+      "repo_name": "bsc-thesis-qanon-analysis",
+      "change_type": "topics",
+      "priority": "medium",
+      "rationale": "Analysis scores this as one of the stronger repos (6/10) with a genuine README, license, and full research artifact. It has no topics. Adding topics for the methods used (Python scraping, R, sentiment analysis, qualitative research) improves discoverability and signals methodological breadth to fellowship reviewers. The content_summary confirms Python, R, and qualitative coding are all present.",
+      "new_content": null,
+      "new_topics": [
+        "python",
+        "r",
+        "sentiment-analysis",
+        "qualitative-research",
+        "social-media-analysis",
+        "thesis",
+        "nlp",
+        "discourse-analysis"
+      ]
+    },
+    {
+      "repo_name": "R-workshop",
+      "change_type": "topics",
+      "priority": "medium",
+      "rationale": "R-workshop is one of the stronger repos (score 7), has a live deployed GitHub Pages site, and demonstrates ability to build educational technical content — a relevant signal for a PM targeting AI safety roles where communication and pedagogy matter. It has no topics. Adding topics surfaces it to relevant audiences and is fully grounded in the content_summary (R tutorials, COVID-19 data, GitHub Pages deployment).",
+      "new_content": null,
+      "new_topics": [
+        "r",
+        "data-analysis",
+        "education",
+        "tutorial",
+        "github-pages",
+        "social-science",
+        "data-visualization"
+      ]
+    },
+    {
+      "repo_name": "hendrik-conversational-agent-furhat",
+      "change_type": "topics",
+      "priority": "low",
+      "rationale": "Analysis scores this 6/10 with one of the better READMEs and a genuine research artifact (conversational AI course evaluation study, Kotlin/Gradle, research paper included). It has no description or topics. The conversational AI research angle has some relevance to AI safety-adjacent work per the analysis. Topics are grounded in the content_summary (Kotlin, Furhat, conversational agent, formal vs. casual dialogue styles).",
+      "new_content": null,
+      "new_topics": [
+        "kotlin",
+        "conversational-ai",
+        "furhat",
+        "human-robot-interaction",
+        "nlp",
+        "course-project",
+        "dialogue-systems"
+      ]
+    },
+    {
+      "repo_name": "hendrik-conversational-agent-furhat",
+      "change_type": "description",
+      "priority": "low",
+      "rationale": "The repo has no description, so it shows as blank in profile views. The content_summary and README analysis confirm clear details about the project: a Furhat-based conversational agent comparing formal vs. casual dialogue styles for course evaluations, built for a 2022 University of Twente course. A brief description improves first-impression legibility without overstating the project's scope.",
+      "new_content": "Furhat-based conversational agent (Kotlin) that conducted course evaluations in formal vs. casual dialogue styles. University of Twente, 2022. Includes source, research paper, and SASSI evaluation data.",
+      "new_topics": null
+    }
+  ],
+  "summary_plan": "The strategy is to convert two existing high-quality repos into genuinely portfolio-ready artifacts, then improve discoverability across the profile through targeted topics and descriptions.\n\n**Tier 1 — Make the two strongest repos actually work as portfolio evidence (high priority):**\ngithub-analyzer-profile-agent is the most technically credible public repo but its README reads as a personal dev diary with no architecture explanation or setup instructions. Rewriting it to describe the four-agent pipeline, Pydantic schema design, and how to run it transforms it from invisible to directly legible to a fellowship technical reviewer. soft-hard-prompts-msc-thesis already has an excellent README but lacks the three-line setup/run guide that converts it from a research artifact into a reproducible demonstration — the distinction fellowship reviewers consistently draw. Both repos also receive topic tags to maximize discoverability.\n\n**Tier 2 — Fix the profile README as the primary navigation surface (high priority):**\nThe Flifenstein profile README states the right interests but links to nothing. Adding three short project descriptions with direct links to the top repos creates a navigation path from landing card to evidence — following GitHub's own guidance and directly addressing the gap noted in both the analysis and personalized advice.\n\n**Tier 3 — Improve discoverability of secondary repos (medium/low priority):**\nEUdocumentsChat, bsc-thesis-qanon-analysis, R-workshop, and hendrik-conversational-agent-furhat all lack topics and some lack descriptions. These are not structural changes but they cost nothing and improve the signal:noise ratio when a reviewer browses the profile. EUdocumentsChat also gets a description rewrite to replace the informal original with a professional one grounded in the repo's documented content.\n\n**What this plan deliberately omits:**\nLicense additions are the single highest-impact omitted item — they are consistently flagged in both analysis and research as a basic open-source hygiene failure. However, adding a license file is not a supported change_type in this plan's execution model and so is excluded. The private repos (ai-techsafety-journey, FullStackDevCourse) are not touched because making them public without proper READMEs would add noise rather than signal. The 2017 artifact repos (TicTacToeAPP, Arduino-Music-in-Assembly, Python-mini-search-engine-, JAVA-Software-Systems) are intentionally left alone — improving them would be low-leverage given their age and irrelevance to the target audience."
+}
