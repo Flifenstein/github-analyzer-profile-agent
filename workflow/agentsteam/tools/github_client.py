@@ -26,7 +26,7 @@ class GitHubReader:
         return data
     
     def get_repo_details(self, repo: str):
-        url = "https://api.github.com/repos/{self.username}/{repo}"
+        url = f"https://api.github.com/repos/{self.username}/{repo}"
         response = requests.get(url, headers=self.headers)
         response.raise_for_status()
         data = response.json()

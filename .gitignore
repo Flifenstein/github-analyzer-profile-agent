@@ -5,6 +5,9 @@ __pycache__/
 .mypy_cache/
 .ruff_cache/
 
+# Pipeline run traces (contains your repo data)
+runs/
+
 # Claude
 .claude/
 
