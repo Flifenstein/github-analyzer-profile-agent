@@ -7,8 +7,8 @@ class ProfileAnalysis(BaseModel):
     github_username: str
     repos : list[RepoScore]
     patterns : list[str]
-    strengths : str
-    weaknesses : str
+    strengths : list[str]
+    weaknesses : list[str]
     overall_analysis : str
     role : str
     optimizing_for: str

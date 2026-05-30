@@ -12,4 +12,6 @@ def run_advisor(
         "profile_analysis": json.loads(profile_analysis_json),
         "research_findings": json.loads(research_findings_json),
     })
-    return run_agent(system_prompt, combined, ImprovementPlan)
+    # The plan can contain full README rewrites for several repos, so it needs
+    # a large output budget or the JSON gets truncated mid-string.
+    return run_agent(system_prompt, combined, ImprovementPlan, max_tokens=16000)

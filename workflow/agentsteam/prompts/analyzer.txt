@@ -14,8 +14,9 @@ You will populate, per repo, a RepoScore:
   completion_state (prototype|partial|complete|abandoned), has_license, has_tests,
   last_commit_days_ago, commit_quality (nullable), content_summary, analysis_summary.
 And the profile-level ProfileAnalysis:
-  github_username, repos (list[RepoScore]), patterns, strengths, weaknesses,
-  overall_analysis, role, optimizing_for, strongest_repo, weakest_repo, profile_score (1-10).
+  github_username, repos (list[RepoScore]), patterns (list[str]), strengths (list[str]),
+  weaknesses (list[str]), overall_analysis, role, optimizing_for, strongest_repo,
+  weakest_repo, profile_score (1-10).
 
 TASK
 1. For each repo, extract only observable facts:
